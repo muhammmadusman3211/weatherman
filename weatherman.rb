@@ -10,44 +10,46 @@ class Weatherman
   include Monthly
   include Yearly
 
-  def initialize(first_param, second_param)
-    @first_param = first_param
-    @second_param  = second_param
+  def initialize(task_identifier, date, path_to_file)
+    @task_identifier = task_identifier
+    @date  = date
+    @path_to_file = path_to_file
     @year = 0
     @month = 0
     @city = ""
+    puts @task_identifier, @date, @path_to_file
   end
 
   def populate_parameters
-    if @first_param == "-e"
-      @year, @city = @second_param.split('/')
-    elsif @first_param == "-a" || "-c"
-      @year, @month, @city = @second_param.split('/')
+    if @task_identifier == "-e"
+      @year = @date
+    elsif @task_identifier == "-a" || "-c"
+      @year, @month = @date.split('/')
     else
       print "Your input is not valid"
     end
   end
 
   def getFirstParam
-    return @first_param
+    return @task_identifier
   end
 
   def print_monthly_min_max_temperature
-    max = find_monthly_min_max_temprature(@city, @month, @year)
+    max = find_monthly_min_max_temprature(@year, @month, @path_to_file)
     puts max
   end
 
   def print_colored_monthly_temperature
-    colored_monthly_temperature(@city, @month, @year)
+    colored_monthly_temperature(@year, @month, @path_to_file)
   end
 
 
   def print_yearly_min_max_temperature
-    find_yearly_min_max_temperature(@city, @year)
+    find_yearly_min_max_temperature(@year, @path_to_file)
   end
 end
 
-weatherman = Weatherman.new(ARGV[0], ARGV[1])
+weatherman = Weatherman.new(ARGV[0], ARGV[1], ARGV[2])
 weatherman.populate_parameters
 
 if weatherman.getFirstParam == "-a"

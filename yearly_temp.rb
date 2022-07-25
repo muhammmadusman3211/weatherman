@@ -1,6 +1,6 @@
 
 module Yearly
-  def find_yearly_min_max_temperature(city,year)
+  def find_yearly_min_max_temperature(year, path_to_file)
 
     month = 1
     max_at_day = 1
@@ -19,8 +19,8 @@ module Yearly
 
     12.times do
       line_index = 0
-    if File.exist? (File.join(File.dirname(File.absolute_path(__FILE__)),"/#{city}_weather/#{city}_weather_#{year}_#{Date::MONTHNAMES[month].to_s[0..2]}.txt"))
-      file = File.open(File.join(File.dirname(File.absolute_path(__FILE__)),"/#{city}_weather/#{city}_weather_#{year}_#{Date::MONTHNAMES[month].to_s[0..2]}.txt"))
+    if File.exist? (File.join(File.dirname(File.absolute_path(__FILE__)), path_to_file + "/" + path_to_file + "_#{year}_#{Date::MONTHNAMES[month].to_s[0..2]}.txt"))
+      file = File.open(File.join(File.dirname(File.absolute_path(__FILE__)), path_to_file + "/" + path_to_file + "_#{year}_#{Date::MONTHNAMES[month].to_s[0..2]}.txt"))
       file.each_line.with_index{ |line, index|
         if index > 1
           gst, max_temp[line_index], mean, min_temp[line_index], min_dew, mean_dew, max_dew, max_humidity[line_index], *data = line.split(',')

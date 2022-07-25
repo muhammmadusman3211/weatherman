@@ -1,12 +1,12 @@
 require 'colorize'
 
-def colored_monthly_temperature(city, month, year)
+def colored_monthly_temperature(year, month, path_to_file)
   month = month.to_i
   line_index = 0
   max_temp = []
   min_temp = []
-  if File.exist? (File.join(File.dirname(File.absolute_path(__FILE__)),"/#{city}_weather/#{city}_weather_#{year}_#{Date::MONTHNAMES[month].to_s[0..2]}.txt"))
-  file = File.open(File.join(File.dirname(File.absolute_path(__FILE__)),"/#{city}_weather/#{city}_weather_#{year}_#{Date::MONTHNAMES[month].to_s[0..2]}.txt"))
+  if File.exist? (File.join(File.dirname(File.absolute_path(__FILE__)), path_to_file))
+  file = File.open(File.join(File.dirname(File.absolute_path(__FILE__)), path_to_file))
     file.each_line.with_index do |line, index|
       if index > 1
         gst, max_temp[line_index], mean, min_temp[line_index], *data = line.split(',')
