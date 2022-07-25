@@ -7,7 +7,6 @@ module Monthly
     line_index = 0
     max_temp = []
     min_temp = []
-    mean_temp = []
     mean_humidity = []
     day = 0
 
