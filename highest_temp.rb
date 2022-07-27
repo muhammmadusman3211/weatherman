@@ -45,9 +45,8 @@ module Monthly
     min_temp.map!(&:to_i)
     mean_humidity.map!(&:to_i)
 
-    puts "Average Maximum Temperature:" + (max_temp.sum/max_temp.length).to_s
-    puts "Average Minimum Temperature:" + min_temp.min.to_s
-    puts "Average Humidity:" + mean_humidity.max.to_s
+    return [max_temp, min_temp, mean_humidity]
+
 
   end
 end

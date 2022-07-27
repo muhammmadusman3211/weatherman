@@ -77,12 +77,10 @@ module Yearly
 
   end
   if error != 12
-    print "Maximum Temparature ", maximum_temp, "C on", " ", max_at_day, " ", Date::MONTHNAMES[max_at_month].to_s
-    puts ""
-    print "Minimum Temparature ", minimum_temp, "C on", " ", min_at_day, " ", Date::MONTHNAMES[min_at_month].to_s
-    puts ""
-    print "Maximum Humidity ", max_humidity.max.to_s, "% on", " ", max_humid_at_day, " ", Date::MONTHNAMES[max_humid_at_month].to_s
-    puts ""
+    return [maximum_temp, max_at_day, max_at_month, minimum_temp, min_at_day, min_at_month, max_humidity, max_humid_at_day, max_humid_at_month]
+  else
+    return -1
+
   end
   end
 end
