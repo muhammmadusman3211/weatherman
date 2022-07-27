@@ -1,12 +1,13 @@
 #inlcude inside classs
 
 require 'date'
-require_relative 'highest_temp'
-require_relative 'yearly_temp'
-require_relative 'colored_monthly_temp'
+
 
 
 class Weatherman
+  require_relative 'highest_temp'
+  require_relative 'yearly_temp'
+  require_relative 'colored_monthly_temp'
   include Monthly
   include Yearly
 
