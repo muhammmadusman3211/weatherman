@@ -10,8 +10,8 @@ module Monthly
     mean_humidity = []
     day = 0
 
-    if File.exist?(File.join(File.dirname(File.absolute_path(__FILE__)), path_to_file ))
-      file = File.open(File.join(File.dirname(File.absolute_path(__FILE__)), path_to_file))
+    if File.exist?(File.join(File.dirname(File.absolute_path(__FILE__)), path_to_file + "/" + path_to_file + "_#{year}_#{Date::MONTHNAMES[month].to_s[0..2]}.txt" ))
+      file = File.open(File.join(File.dirname(File.absolute_path(__FILE__)), path_to_file + "/" + path_to_file + "_#{year}_#{Date::MONTHNAMES[month].to_s[0..2]}.txt"))
       file.each_line.with_index do |line, index|
         if index > 1
           gst, max_temp[line_index], mean_temp, min_temp[line_index], min_dew, mean_dew, max_dev, min_humidity, mean_humidity[line_index], *data = line.split(',')
