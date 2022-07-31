@@ -1,9 +1,4 @@
-#inlcude inside classs
-
 require 'date'
-
-
-
 class Weatherman
   require_relative 'highest_temp'
   require_relative 'yearly_temp'
@@ -18,17 +13,22 @@ class Weatherman
     @year = 0
     @month = 0
     @city = ""
-    puts @task_identifier, @date, @path_to_file
+
+
   end
 
   def populate_parameters
     if @task_identifier == "-e"
       @year = @date
     elsif @task_identifier == "-a" || "-c"
-      @year, @month = @date.split('/')
+      @year, @month  = @date.split('/')
     else
       print "Your input is not valid"
+      exit
     end
+
+
+
   end
 
   def getFirstParam
@@ -80,6 +80,3 @@ else
 
 end
 
-
-
-#exception if the city, month or year does not exist
