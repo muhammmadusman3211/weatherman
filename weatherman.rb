@@ -6,15 +6,14 @@ class Weatherman
   include Monthly
   include Yearly
 
-  def initialize(task_identifier, date, path_to_file)
+  def initialize(task_identifier, date, path_to_file, extra)
     @task_identifier = task_identifier
     @date  = date
     @path_to_file = path_to_file
     @year = 0
     @month = 0
     @city = ""
-
-
+    @extra = extra
   end
 
   def populate_parameters
@@ -27,7 +26,10 @@ class Weatherman
       exit
     end
 
-
+    if @extra
+      print "Your input is not valid"
+      exit
+    end
 
   end
 
@@ -50,7 +52,7 @@ class Weatherman
   end
 end
 
-weatherman = Weatherman.new(ARGV[0], ARGV[1], ARGV[2])
+weatherman = Weatherman.new(ARGV[0], ARGV[1], ARGV[2], ARGV[3])
 weatherman.populate_parameters
 
 if weatherman.getFirstParam == "-a"
